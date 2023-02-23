@@ -1,0 +1,11 @@
+{
+  "name": "gibber-resources",
+  "version": "1.0.0",
+  "description": "extending the functionality of the live coding environment gibber.cc",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "FaMLE",
+  "license": "ISC"
+}
