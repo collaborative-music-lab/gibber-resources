@@ -2,6 +2,6 @@ import "samplerSupport.js"
 import "sampleDefinitions.js"
 import "modes.js"
 
-function loadGibberSipport(){
+function init(){
 	console.log("gibber support loaded\n")
 }
