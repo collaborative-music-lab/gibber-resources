@@ -2,7 +2,8 @@
 // import "sampleDefinitions.js"
 // import "modes.js"
 
-Console.log('test')
+Console.log('test body')
+test()
 
 function init(){
 	document.head.appendChild(document.createElement('script')).src = "https://cdn.jsdelivr.net/gh/collaborative-music-lab/gibber-resources/samplerSupport.js"
