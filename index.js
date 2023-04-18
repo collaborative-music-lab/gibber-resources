@@ -11,5 +11,5 @@ function init(){
 }
 
 function test(){
-	Console.log('test')
+	Console.log('test function')
 }
