@@ -11,7 +11,7 @@ createSampler = function(sound){
 }
 
 ptos = function(num){
-  degree = 60 - num
+  degree = num
   return Math.pow(2,degree/12) 
 }
 
