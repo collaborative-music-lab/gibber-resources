@@ -17,12 +17,36 @@ ptos = function(num){
   return Math.pow(2,degree/12) 
 }
 
-// major = function(num){
-//   degree = num + root
-//   scale = [0,2,4,5,7,9,11]
-//   octave = Math.floor(degree / scale.length)
-//   degree = scale[ degree degree.length]
-// }
+/* scale functions*/
+
+major = function(num){
+  degree = num
+  scale = [0,2,4,5,7,9,11]
+  octave = Math.floor(degree / scale.length)
+  degree = scale[ degree % scale.length]
+  return ptos( degree + octave*12 + root)
+}
+
+minor = function(num){
+  degree = num
+  scale = [0,2,3,5,7,8,10]
+  octave = Math.floor(degree / scale.length)
+  degree = scale[ degree % scale.length]
+  return ptos( degree + octave*12 + root)
+}
+
+toScale = function(num, scale){
+  if( !Array.isArray(scale) ) {
+    console.log("toScale: arg2 should be an array")
+    return ptos(root)
+  }
+  degree = num
+  octave = Math.floor(degree / scale.length)
+  degree = scale[ degree % scale.length]
+  return ptos( degree + octave*12 + root)
+}
+
+/* sampler definitions*/
 
 samples = {
   "harp" : {
