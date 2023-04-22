@@ -131,7 +131,7 @@ samples = {
   // },
   "pianoShort" : {
     "id" : 562754,
-    "pitch" : 57,
+    "pitch" : 71,
     "amp" : 1,
     "source" : "freesound"
   }
