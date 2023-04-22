@@ -122,5 +122,17 @@ samples = {
     "pitch":60,
     "amp": .4, 
     "source": "freesound"
+  },
+  // "cs80" : {
+  //   "id" : 526273,
+  //   "pitch" : 80,
+  //   "amp" : 1,
+  //   "source" : "freesound"
+  // },
+  "pianoShort" : {
+    "id" : 562754,
+    "pitch" : 57,
+    "amp" : 1,
+    "source" : "freesound"
   }
 }
