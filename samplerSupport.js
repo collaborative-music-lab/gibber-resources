@@ -1,4 +1,4 @@
-root = 0
+root = 'a4'
 
 createSampler = function(sound){
   sample = samples[sound]
@@ -12,38 +12,52 @@ createSampler = function(sound){
     }
 }
 
+/* scale functions*/
+setRoot = function(val){
+  Theory.root = val
+  sampleRoot = val
+}
+ 
 ptos = function(num){
-  degree = num + root
+  degree =  num
   return Math.pow(2,degree/12) 
 }
-
-/* scale functions*/
-
-major = function(num){
-  degree = num
-  scale = [0,2,4,5,7,9,11]
-  octave = Math.floor(degree / scale.length)
-  degree = scale[ degree % scale.length]
-  return ptos( degree + octave*12 + root)
-}
-
-minor = function(num){
-  degree = num
-  scale = [0,2,3,5,7,8,10]
-  octave = Math.floor(degree / scale.length)
-  degree = scale[ degree % scale.length]
-  return ptos( degree + octave*12 + root)
-}
-
-toScale = function(num, scale){
+ 
+major = function(degree, scale = [0,2,4,5,7,9,11]){ return toScale(degree,scale) }
+ 
+minor = function(degree, scale = [0,2,3,5,7,8,10]){ return toScale(degree,scale) }
+ 
+toScale = function(degree, scale){
+  //console.log(degree,scale)
+  
   if( !Array.isArray(scale) ) {
     console.log("toScale: arg2 should be an array")
-    return ptos(root)
+    return ptos(root2degree(sampleRoot))
   }
-  degree = num
   octave = Math.floor(degree / scale.length)
-  degree = scale[ degree % scale.length]
-  return ptos( degree + octave*12 + root)
+  degree = scale[ (degree+scale.length*Math.abs(octave)) % scale.length]
+  return ptos( degree + octave*12 + root2degree(sampleRoot))
+}
+ 
+root2degree = function(val){
+  if(val.length==2){
+    scale = [0,2,3,5,7,8,10]
+    degree = scale[val.charCodeAt(0)-97]
+    octave = val.charCodeAt(1)-48-4
+  } else if( val.length==3 && val.charCodeAt(0)==98){//flat
+    scale = [-1,-1,2,4,6,7,9]
+    degree = scale[val.charCodeAt(0)-97]
+    octave = val.charCodeAt(1)-48-4
+  } else if( val.length==3 && val.charCodeAt(0)==35){//sharp
+    scale = [1,3,4,6,8,9,11]
+    degree = scale[val.charCodeAt(0)-97]
+    octave = val.charCodeAt(1)-48-4
+  } else {
+    console.log("improper root designation - should be a4, a#4, ab4, etc.")
+    return 0
+  }
+  console.log(degree, octave)
+  return degree + octave*12
 }
 
 /* sampler definitions*/
@@ -105,7 +119,7 @@ samples = {
   },
   "voice" : {
     "id": 508347,
-    "pitch":65,
+    "pitch":60,
     "amp": .4, 
     "source": "freesound"
   }
