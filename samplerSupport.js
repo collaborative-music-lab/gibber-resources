@@ -1,3 +1,5 @@
+root = 0
+
 createSampler = function(sound){
   sample = samples[sound]
   cGain = 1/sample.amp
@@ -11,9 +13,16 @@ createSampler = function(sound){
 }
 
 ptos = function(num){
-  degree = num
+  degree = num + root
   return Math.pow(2,degree/12) 
 }
+
+// major = function(num){
+//   degree = num + root
+//   scale = [0,2,4,5,7,9,11]
+//   octave = Math.floor(degree / scale.length)
+//   degree = scale[ degree degree.length]
+// }
 
 samples = {
   "harp" : {
