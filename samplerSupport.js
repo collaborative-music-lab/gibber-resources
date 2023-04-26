@@ -1,4 +1,4 @@
-root = 'a4'
+sampleRoot = 'a4'
 
 createSampler = function(sound){
   sample = samples[sound]
