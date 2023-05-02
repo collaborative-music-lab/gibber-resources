@@ -23,9 +23,9 @@ ptos = function(num){
   return Math.pow(2,degree/12) 
 }
  
-major = function(degree, scale = [0,2,4,5,7,9,11]){ return toScale(degree,scale) }
+major = function(degree){ return toScale(degree,scale) }
  
-minor = function(degree, scale = [0,2,3,5,7,8,10]){ return toScale(degree,scale) }
+minor = function(degree){ return toScale(degree,scale) }
  
 toScale = function(degree, scale){
   //console.log(degree,scale)
@@ -63,6 +63,7 @@ root2degree = function(val){
 /* sampler definitions*/
 
 samples = {
+  list : function(){ console.log(Object.keys(samples))},
   "harp" : {
     "id": 521934,
     "pitch": 51,
