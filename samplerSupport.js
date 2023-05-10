@@ -56,20 +56,13 @@ root2degree = function(val){
     console.log("improper root designation - should be a4, a#4, ab4, etc.")
     return 0
   }
-  console.log(degree, octave)
+  //console.log(degree, octave)
   return degree + octave*12
 }
 
 /* sampler definitions*/
 
 samples = {
-  list : function(){ console.log(Object.keys(samples))},
-  "harp" : {
-    "id": 521934,
-    "pitch": 51,
-    "amp": 1, 
-    "source": "freesound"
-  },
   "rhodes" : {
     "id": 65719,
     "pitch": 39,
@@ -135,5 +128,12 @@ samples = {
     "pitch" : 71,
     "amp" : 1,
     "source" : "freesound"
+  }, 
+  list : function(){ console.log(Object.keys(samples))},
+  "harp" : {
+    "id": 521934,
+    "pitch": 51,
+    "amp": 1, 
+    "source": "freesound"
   }
 }
