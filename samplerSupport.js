@@ -137,3 +137,81 @@ samples = {
     "source": "freesound"
   }
 }
+
+//waveform generators
+tri = function(x,f=4,a=1){
+  if(x<-10000) return _
+  return 4*a/f * Math.abs((((x-f/4)%f)+f)%f - f/2) - a
+}
+
+sin = function(x,f=16,a=1){
+  if(x<-10000) return _
+  f=f/2
+  return Math.sin(2*Math.PI*x/f)*a
+}
+
+ramp = function(x,f=4,a=1){
+  if(x<-10000) return _
+  if(f<0) return (1+(x%f)/f) * a
+  return (x%f)/f * a
+}
+
+//monitoring
+monitor = function(val, length=4){
+  for(i=0;i<8;i++)console.log('_')
+  for(i=0;i<val.length;i++) val[i] = val[i]<-10000 ? '_' : val[i]
+  for(i=0;i<val.length/length;i++) {
+    val = val.slice(i*length,i*length+length)
+    val2=[]
+    for(j=0;j<length;j++){val2.push(parseFloat(val[j].toFixed(2)))
+    console.log(val2)
+  }
+}
+
+//math
+floor = function(val){
+  if(val < -100000) return _
+  return Math.floor(val)
+}
+
+ceil = function(val){
+  if(val < -100000) return _
+  return Math.ceil(val)
+}
+
+peak = function(val){
+  if(val < -100000) return _
+  return Math.ceil(val)
+}
+
+round = function(val){
+  if(val < -100000) return _
+  return Math.round(val)
+}
+
+trunc = function(val){
+  if(val < -100000) return _
+  return Math.trunc(val)
+}
+
+abs = function(val){
+  if(val < -100000) return _
+  return Math.abs(val)
+}
+
+cos = function(val){
+  if(val < -100000) return _
+  return Math.cos(val)
+}
+
+map = function(x, low,high,min=0,max=1,curve=1){
+   x = (x-low)/(high-low)
+  
+  if(x<0) return min
+  if(x>1) return max
+  
+  if(curve!=1) x = Math.pow(x,Math.abs(curve))
+  if(curve<0) x = -x
+  
+  return x*(max-min)+min
+}
