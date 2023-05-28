@@ -219,3 +219,33 @@ map = function(x, low,high,min=0,max=1,curve=1){
   
   return x*(max-min)+min
 }
+
+swing = function(division=1/16,swing=.33,tilt=0){
+  //set tilt to +/- 1
+  tilt = tilt>1 ? 1 : tilt<-1 ? -1 : tilt
+  tilt = tilt>0 ? 1-tilt : -1-tilt
+  
+  let arr=[]
+  let len = 1/division
+  for(let i=0;i<len;i++){
+    let val = i%2==0 ? swing : -swing
+    if(tilt>=0){
+      //tilt = tilt<0 ? Math.pow(Math.abs(tilt),1.1) :Math.pow(tilt,1.1)
+      val = i%2==0 ? 
+        val-Math.pow((1-tilt)*(Math.floor(i/2)/len*2),tilt)*val :
+        val-Math.pow((1-tilt)*(Math.floor((i-1)/2)/len*2),tilt)*val
+      //console.log( i%2==0 ? Math.pow(1*(Math.floor(i/2)/len*2),tilt)*val :Math.pow(1*(Math.floor((i-1)/2)/len*2),tilt)*val)
+    } else{
+      let index=len-i-1
+      let atilt = Math.abs(tilt)
+      val = index%2==0 ? 
+        val-Math.pow((1-atilt)*(Math.floor(index/2)/len*2),atilt)*val :
+        val-Math.pow((1-atilt)*(Math.floor((index-1)/2)/len*2),atilt)*val
+      //console.log(index%2==0 ? Math.pow((1-atilt)*(Math.floor(index/2)/len*2),atilt)*val :Math.pow((1-atilt)*(Math.floor((index-1)/2)/len*2),atilt)*val)
+    }
+    val = division*(1+val)
+    arr.push(val)
+  }
+  return arr
+  //return [division*(1+swing),division*(1-swing)]
+}
