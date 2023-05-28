@@ -163,7 +163,7 @@ monitor = function(val, length=4){
   for(i=0;i<val.length/length;i++) {
     val = val.slice(i*length,i*length+length)
     val2=[]
-    for(j=0;j<length;j++){val2.push(parseFloat(val[j].toFixed(2)))
+    for(j=0;j<length;j++) val2.push(parseFloat(val[j].toFixed(2)))
     console.log(val2)
   }
 }
@@ -205,7 +205,7 @@ cos = function(val){
 }
 
 map = function(x, low,high,min=0,max=1,curve=1){
-   x = (x-low)/(high-low)
+  x = (x-low)/(high-low)
   
   if(x<0) return min
   if(x>1) return max
