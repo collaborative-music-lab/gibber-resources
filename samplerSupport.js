@@ -1,3 +1,7 @@
+version = function(){
+  console.log('sampler support v1.0')
+}
+
 sampleRoot = 'a4'
 
 createSampler = function(sound){
